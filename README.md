@@ -27,7 +27,7 @@ dependencies {
 
 ## How to use it
 
-![](http://www.dadkhahhadi.ir/github/shadowLayoutimg.gif)
+![](http://www.dadkhahhadi.ir/github/shadowLayoutimg.png)
 
 ### You must use this way to use it
 ```xml
