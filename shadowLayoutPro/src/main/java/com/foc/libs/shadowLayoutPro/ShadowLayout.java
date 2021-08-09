@@ -17,8 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public class ShadowLayout extends FrameLayout {
-    
-    String TAG="ShadowLayout";
+
+    String TAG = "ShadowLayout";
 
     //shadow value
     public int shadowValue = 25;
@@ -26,11 +26,15 @@ public class ShadowLayout extends FrameLayout {
     public float dx = 0;
     //dy
     public float dy = 0;
+    //color
+    public int shadowColor = Color.parseColor("#212121");
 
     //shadow paint
     private Paint shadowPaint;
-    //shadow color
-    private int shadowColor = Color.parseColor("#212121");
+
+    //allow draw shadow
+    private boolean isAllowDrawShadow = true;
+
 
     public ShadowLayout(@NonNull Context context) {
         super(context);
@@ -87,7 +91,7 @@ public class ShadowLayout extends FrameLayout {
      */
     private Paint createShadowPaint() {
 
-        Paint paint = new Paint();
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         //layer type
         setLayerType(LAYER_TYPE_SOFTWARE, paint);
 
@@ -100,36 +104,43 @@ public class ShadowLayout extends FrameLayout {
     @Override
     protected void dispatchDraw(Canvas canvas) {
 
-        Log.i(TAG, "dispatchDraw: ");
 
         try {
 
-            //create  bitmap for canvas
-            Bitmap bitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
+            //if allowed
+            if (isAllowDrawShadow) {
 
-            //create canvas for draw shadow on it
-            Canvas shadowCanvas = new Canvas(bitmap);
+                //create  bitmap for canvas
+                Bitmap bitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
 
-            //draw shadow on canvas
-            super.dispatchDraw(shadowCanvas);
+                //create canvas for draw shadow on it
+                Canvas shadowCanvas = new Canvas(bitmap);
 
-            /*
-             * Now we can get all shadow data from bitmap
-             */
-            Bitmap shadowBitmap = bitmap.extractAlpha();
+                //draw shadow on canvas
+                super.dispatchDraw(shadowCanvas);
 
-            //*******************draw bitmap with alpha color
-            //set shadow color
-            shadowPaint.setColor(getFullAlphaColor(false));
-            //draw shadow on main canvas
-            canvas.drawBitmap(shadowBitmap, dx, dy, shadowPaint);
+                /*
+                 * Now we can get all shadow data from bitmap
+                 */
+                Bitmap shadowBitmap = bitmap.extractAlpha();
+
+                //*******************draw bitmap with alpha color
+                //set shadow color
+                shadowPaint.setColor(getFullAlphaColor(false));
+                //draw shadow on main canvas
+                canvas.drawBitmap(shadowBitmap, dx, dy, shadowPaint);
 
 
-            //******************draw bitmap with full alpha color
-            //set shadow color
-            shadowPaint.setColor(getFullAlphaColor(true));
-            //draw childes with full alpha
-            canvas.drawBitmap(bitmap, 0, 0, shadowPaint);
+                //******************draw bitmap with full alpha color
+                //set shadow color
+                shadowPaint.setColor(getFullAlphaColor(true));
+                //draw childes with full alpha
+                canvas.drawBitmap(bitmap, 0, 0, shadowPaint);
+
+
+                bitmap.recycle();
+                shadowBitmap.recycle();
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -143,4 +154,22 @@ public class ShadowLayout extends FrameLayout {
     private int getFullAlphaColor(boolean isFull) {
         return Color.argb(isFull ? 255 : Color.alpha(shadowColor), Color.red(shadowColor), Color.green(shadowColor), Color.blue(shadowColor));
     }
+
+    /**
+     * Enable shadow
+     */
+    public void enableShadow() {
+        isAllowDrawShadow = true;
+        postInvalidate();
+    }
+
+    /**
+     * Disable shadow
+     */
+    public void disableShadow() {
+        isAllowDrawShadow = false;
+        postInvalidate();
+    }
+
+
 }
