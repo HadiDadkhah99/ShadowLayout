@@ -29,6 +29,16 @@ public class ShadowLayout extends FrameLayout {
     //color
     public int shadowColor = Color.parseColor("#212121");
 
+    //**************margins
+    //margin right
+    public float marginRight = 0;
+    //margin bottom
+    public float marginBottom = 0;
+    //margin left
+    public float marginLeft = 0;
+    //margin top
+    public float marginTop = 0;
+
     //shadow paint
     private Paint shadowPaint;
 
@@ -75,11 +85,19 @@ public class ShadowLayout extends FrameLayout {
 
         //get shadow value
         shadowValue = typedArray.getInteger(R.styleable.ShadowLayout_shadow_value, shadowValue);
+
         //get color
         shadowColor = typedArray.getColor(R.styleable.ShadowLayout_shadow_color, shadowColor);
+
         //get dx , dy
         dx = typedArray.getDimension(R.styleable.ShadowLayout_shadow_dx, dx);
         dy = typedArray.getDimension(R.styleable.ShadowLayout_shadow_dy, dy);
+
+        //get margins
+        marginLeft=typedArray.getDimension(R.styleable.ShadowLayout_shadow_margin_left,marginLeft);
+        marginTop=typedArray.getDimension(R.styleable.ShadowLayout_shadow_margin_top,marginTop);
+        marginRight=typedArray.getDimension(R.styleable.ShadowLayout_shadow_margin_right,marginRight);
+        marginBottom=typedArray.getDimension(R.styleable.ShadowLayout_shadow_margin_bottom,marginBottom);
 
         //main
         typedArray.recycle();
@@ -124,11 +142,13 @@ public class ShadowLayout extends FrameLayout {
                  */
                 Bitmap shadowBitmap = bitmap.extractAlpha();
 
+                shadowBitmap = ShadowUtil.resizeBitmap(shadowBitmap, (int) (shadowBitmap.getWidth() - marginRight - marginLeft), (int) (shadowBitmap.getHeight() - marginBottom-marginTop));
+
                 //*******************draw bitmap with alpha color
                 //set shadow color
                 shadowPaint.setColor(getFullAlphaColor(false));
                 //draw shadow on main canvas
-                canvas.drawBitmap(shadowBitmap, dx, dy, shadowPaint);
+                canvas.drawBitmap(shadowBitmap, dx + marginLeft, dy+marginTop, shadowPaint);
 
 
                 //******************draw bitmap with full alpha color

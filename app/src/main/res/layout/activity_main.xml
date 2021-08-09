@@ -46,7 +46,8 @@
         android:layout_width="match_parent"
         android:padding="8dp"
         app:shadow_color="@android:color/holo_red_light"
-        app:shadow_dy="2dp"
+        app:shadow_margin_left="3dp"
+        app:shadow_margin_top="3dp"
         app:shadow_value="15">
 
         <EditText
@@ -65,11 +66,5 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:text="Enable-Disable" />
-
-    <com.foc.libs.shadowlayout.Test
-        android:background="#848484"
-        android:layout_height="200dp"
-        android:layout_width="match_parent" />
-
 
 </LinearLayout>

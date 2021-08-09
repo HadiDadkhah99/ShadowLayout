@@ -7,7 +7,7 @@ import android.os.Bundle;
 import com.foc.libs.shadowLayoutPro.ShadowLayout;
 
 public class MainActivity extends AppCompatActivity {
-    boolean b = false;
+    boolean b = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
