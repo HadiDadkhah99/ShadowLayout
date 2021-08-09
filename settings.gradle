@@ -1,0 +1,3 @@
+include ':shadowLayoutPro'
+include ':app'
+rootProject.name = "ShadowLayout"

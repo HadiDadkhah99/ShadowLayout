@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#F8F8F8"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:background="@color/white"
+        android:elevation="18dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:elevation="18dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:background="@color/white"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            app:contentInsetEnd="0dp"
+            app:contentInsetStart="0dp">
+
+            <FrameLayout
+                android:layout_height="match_parent"
+                android:layout_width="match_parent">
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Shadow Layout"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+            </FrameLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <com.foc.libs.shadowLayoutPro.ShadowLayout
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_width="match_parent"
+        android:padding="8dp"
+        app:shadow_color="#4E404040"
+        app:shadow_value="15">
+
+        <EditText
+            android:background="@drawable/edit_text_shape"
+            android:layout_height="45dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_width="match_parent"
+            android:paddingEnd="8dp"
+            android:paddingStart="8dp"
+            android:text="Hello World!"
+            android:textColor="@color/black" />
+    </com.foc.libs.shadowLayoutPro.ShadowLayout>
+
+    <com.foc.libs.shadowLayoutPro.ShadowLayout
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:padding="8dp"
+        app:shadow_color="#4E404040"
+        app:shadow_dy="2dp"
+        app:shadow_value="15">
+
+        <EditText
+            android:background="@drawable/edit_text_shape"
+            android:layout_height="45dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_width="match_parent"
+            android:paddingEnd="8dp"
+            android:paddingStart="8dp"
+            android:text="Hello World!"
+            android:textColor="@color/black" />
+    </com.foc.libs.shadowLayoutPro.ShadowLayout>
+
+    <com.foc.libs.shadowLayoutPro.ShadowLayout
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:padding="8dp"
+        app:shadow_color="#FF1744"
+        app:shadow_dy="2dp"
+        app:shadow_value="15">
+
+        <EditText
+            android:background="@drawable/edit_text_shape"
+            android:layout_height="45dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_width="match_parent"
+            android:paddingEnd="8dp"
+            android:paddingStart="8dp"
+            android:text="Hello World!"
+            android:textColor="@color/black" />
+    </com.foc.libs.shadowLayoutPro.ShadowLayout>
+
+    <com.foc.libs.shadowLayoutPro.ShadowLayout
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:padding="8dp"
+        app:shadow_color="#2979FF"
+        app:shadow_dy="0dp"
+        app:shadow_value="10">
+
+        <EditText
+            android:background="@drawable/edit_text_shape"
+            android:layout_height="45dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_width="match_parent"
+            android:paddingEnd="8dp"
+            android:paddingStart="8dp"
+            android:text="Hello World!"
+            android:textColor="@color/black" />
+    </com.foc.libs.shadowLayoutPro.ShadowLayout>
+
+    <com.foc.libs.shadowLayoutPro.ShadowLayout
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:padding="8dp"
+        app:shadow_color="#7F00E676"
+        app:shadow_dx="2dp"
+        app:shadow_dy="2dp"
+        app:shadow_value="15">
+
+        <EditText
+            android:background="@drawable/edit_text_shape"
+            android:layout_height="45dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_width="match_parent"
+            android:paddingEnd="8dp"
+            android:paddingStart="8dp"
+            android:text="Hello World!"
+            android:textColor="@color/black" />
+    </com.foc.libs.shadowLayoutPro.ShadowLayout>
+
+</LinearLayout>

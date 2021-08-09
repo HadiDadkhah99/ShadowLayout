@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ShadowLayout">
+        <attr name="shadow_value" format="integer" />
+        <attr name="shadow_color" format="color" />
+        <attr name="shadow_dx" format="dimension" />
+        <attr name="shadow_dy" format="dimension" />
+    </declare-styleable>
+</resources>
