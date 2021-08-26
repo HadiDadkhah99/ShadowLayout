@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#F8F8F8"
+    android:background="#EAEBF3"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
@@ -45,9 +45,12 @@
         android:layout_marginTop="32dp"
         android:layout_width="match_parent"
         android:padding="8dp"
+
         app:shadow_color="@android:color/holo_red_light"
-        app:shadow_margin_left="3dp"
-        app:shadow_margin_top="3dp"
+        app:shadow_margin_bottom="1dp"
+        app:shadow_margin_left="1dp"
+        app:shadow_margin_right="1dp"
+        app:shadow_margin_top="1dp"
         app:shadow_value="15">
 
         <EditText
@@ -61,10 +64,92 @@
             android:textColor="@color/black" />
     </com.foc.libs.shadowLayoutPro.ShadowLayout>
 
+
     <Button
         android:id="@+id/button_ed"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:text="Enable-Disable" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <com.foc.libs.shadowLayoutPro.ShadowLayout
+            android:id="@+id/shadowLayout2"
+            android:layout_gravity="center"
+            android:layout_height="96dp"
+            android:layout_margin="56dp"
+            android:layout_width="96dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shadow_color="#FFFFFF"
+            app:shadow_just="true"
+            app:shadow_margin_bottom="14dp"
+            app:shadow_margin_right="14dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_gravity="center"
+                android:layout_height="56dp"
+                android:layout_width="56dp"
+                app:cardBackgroundColor="@android:color/holo_red_dark"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp" />
+
+        </com.foc.libs.shadowLayoutPro.ShadowLayout>
+
+        <com.foc.libs.shadowLayoutPro.ShadowLayout
+            android:id="@+id/shadowLayout"
+            android:layout_gravity="center"
+            android:layout_height="96dp"
+            android:layout_margin="56dp"
+            android:layout_width="96dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shadow_color="#B6C2C2C2"
+            app:shadow_just="true"
+            app:shadow_margin_left="14dp"
+            app:shadow_margin_top="14dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_gravity="center"
+                android:layout_height="56dp"
+                android:layout_width="56dp"
+                app:cardBackgroundColor="@android:color/holo_red_dark"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp" />
+
+        </com.foc.libs.shadowLayoutPro.ShadowLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_gravity="center"
+            android:layout_height="56dp"
+            android:layout_margin="72dp"
+            android:layout_width="56dp"
+            app:cardBackgroundColor="#EAEBF3"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_gravity="center"
+                android:layout_height="32dp"
+                android:layout_width="32dp"
+                app:srcCompat="@drawable/ic_play" />
+        </androidx.cardview.widget.CardView>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

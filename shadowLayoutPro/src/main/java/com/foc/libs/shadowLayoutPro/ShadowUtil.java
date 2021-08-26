@@ -21,7 +21,7 @@ public class ShadowUtil {
         //result bitmap
         Bitmap resBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
 
-
+        bitmap.recycle();
 
         return resBitmap;
     }

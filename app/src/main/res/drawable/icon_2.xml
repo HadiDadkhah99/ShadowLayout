@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="60dp"
+    android:height="60dp"
+    android:viewportWidth="60"
+    android:viewportHeight="60">
+
+    <group
+            android:name="Mask_Group_1">
+        <path
+            android:name="Union_1-2"
+            android:fillColor="#eaebf3"
+            android:pathData="M60,78 L60,0 L78,0 L78,78 Z M0,78 L0,60 L60,60 L60,78 Z" />
+        <path
+            android:name="Union_2-2"
+            android:fillColor="#eaebf3"
+            android:pathData="M60,78 L60,0 L78,0 L78,78 Z M0,78 L0,60 L60,60 L60,78 Z" />
+        <path
+            android:name="Union_3-2"
+            android:fillColor="#eaebf3"
+            android:pathData="M60,78 L60,0 L78,0 L78,78 Z M0,78 L0,60 L60,60 L60,78 Z" />
+        <path
+            android:name="Union_4-2"
+            android:fillColor="#eaebf3"
+            android:pathData="M60,78 L60,0 L78,0 L78,78 Z M0,78 L0,60 L60,60 L60,78 Z" />
+    </group>
+</vector>

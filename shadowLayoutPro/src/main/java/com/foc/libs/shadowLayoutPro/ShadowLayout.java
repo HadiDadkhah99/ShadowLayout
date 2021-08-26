@@ -45,6 +45,9 @@ public class ShadowLayout extends FrameLayout {
     //allow draw shadow
     private boolean isAllowDrawShadow = true;
 
+    //just draw shadow
+    private boolean isJustShadow = false;
+
 
     public ShadowLayout(@NonNull Context context) {
         super(context);
@@ -94,10 +97,18 @@ public class ShadowLayout extends FrameLayout {
         dy = typedArray.getDimension(R.styleable.ShadowLayout_shadow_dy, dy);
 
         //get margins
-        marginLeft=typedArray.getDimension(R.styleable.ShadowLayout_shadow_margin_left,marginLeft);
-        marginTop=typedArray.getDimension(R.styleable.ShadowLayout_shadow_margin_top,marginTop);
-        marginRight=typedArray.getDimension(R.styleable.ShadowLayout_shadow_margin_right,marginRight);
-        marginBottom=typedArray.getDimension(R.styleable.ShadowLayout_shadow_margin_bottom,marginBottom);
+        marginLeft = typedArray.getDimension(R.styleable.ShadowLayout_shadow_margin_left, marginLeft);
+        marginTop = typedArray.getDimension(R.styleable.ShadowLayout_shadow_margin_top, marginTop);
+        marginRight = typedArray.getDimension(R.styleable.ShadowLayout_shadow_margin_right, marginRight);
+        marginBottom = typedArray.getDimension(R.styleable.ShadowLayout_shadow_margin_bottom, marginBottom);
+
+
+        //allow shadow
+        isAllowDrawShadow = typedArray.getBoolean(R.styleable.ShadowLayout_shadow_allowed, isAllowDrawShadow);
+
+        //just shadow
+        isJustShadow = typedArray.getBoolean(R.styleable.ShadowLayout_shadow_just, isJustShadow);
+
 
         //main
         typedArray.recycle();
@@ -142,32 +153,37 @@ public class ShadowLayout extends FrameLayout {
                  */
                 Bitmap shadowBitmap = bitmap.extractAlpha();
 
-                shadowBitmap = ShadowUtil.resizeBitmap(shadowBitmap, (int) (shadowBitmap.getWidth() - marginRight - marginLeft), (int) (shadowBitmap.getHeight() - marginBottom-marginTop));
+                shadowBitmap = ShadowUtil.resizeBitmap(shadowBitmap, (int) (shadowBitmap.getWidth() - marginRight - marginLeft), (int) (shadowBitmap.getHeight() - marginBottom - marginTop));
 
                 //*******************draw bitmap with alpha color
                 //set shadow color
                 shadowPaint.setColor(getFullAlphaColor(false));
                 //draw shadow on main canvas
-                canvas.drawBitmap(shadowBitmap, dx + marginLeft, dy+marginTop, shadowPaint);
+                canvas.drawBitmap(shadowBitmap, dx + marginLeft, dy + marginTop, shadowPaint);
 
 
                 //******************draw bitmap with full alpha color
-                //set shadow color
-                shadowPaint.setColor(getFullAlphaColor(true));
-                //draw childes with full alpha
-                canvas.drawBitmap(bitmap, 0, 0, shadowPaint);
+                if (!isJustShadow) {
+                    //set shadow color
+                    shadowPaint.setColor(getFullAlphaColor(true));
+                    //draw childes with full alpha
+                    canvas.drawBitmap(bitmap, 0, 0, shadowPaint);
+                }
 
 
                 bitmap.recycle();
                 shadowBitmap.recycle();
+
+            } else {
+                //draw all childes
+                super.dispatchDraw(canvas);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        //draw all childes
-        super.dispatchDraw(canvas);
+
     }
 
 
@@ -191,5 +207,53 @@ public class ShadowLayout extends FrameLayout {
         postInvalidate();
     }
 
+
+    public boolean isAllowDrawShadow() {
+        return isAllowDrawShadow;
+    }
+
+    public boolean isJustShadow() {
+        return isJustShadow;
+    }
+
+    public void setJustShadow(boolean justShadow) {
+        isJustShadow = justShadow;
+    }
+
+    public void setAllowDrawShadow(boolean allowDrawShadow) {
+        isAllowDrawShadow = allowDrawShadow;
+    }
+
+    public void setDx(float dx) {
+        this.dx = dx;
+    }
+
+    public void setDy(float dy) {
+        this.dy = dy;
+    }
+
+    public void setMarginBottom(float marginBottom) {
+        this.marginBottom = marginBottom;
+    }
+
+    public void setMarginLeft(float marginLeft) {
+        this.marginLeft = marginLeft;
+    }
+
+    public void setMarginRight(float marginRight) {
+        this.marginRight = marginRight;
+    }
+
+    public void setMarginTop(float marginTop) {
+        this.marginTop = marginTop;
+    }
+
+    public void setShadowColor(int shadowColor) {
+        this.shadowColor = shadowColor;
+    }
+
+    public void setShadowValue(int shadowValue) {
+        this.shadowValue = shadowValue;
+    }
 
 }
