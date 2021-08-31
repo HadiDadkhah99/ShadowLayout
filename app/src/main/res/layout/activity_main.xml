@@ -44,10 +44,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_width="match_parent"
-        android:padding="8dp"
-
-        app:shadow_color="@android:color/holo_red_light"
-        app:shadow_margin_bottom="1dp"
+        android:padding="16dp"
+        app:shadow_allowed="true"
+        app:shadow_color="#D9FF0000"
+        app:shadow_margin_bottom="4dp"
         app:shadow_margin_left="1dp"
         app:shadow_margin_right="1dp"
         app:shadow_margin_top="1dp"
@@ -71,35 +71,12 @@
         android:layout_width="match_parent"
         android:text="Enable-Disable" />
 
+<!--
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_height="match_parent"
         android:layout_width="match_parent">
 
-        <com.foc.libs.shadowLayoutPro.ShadowLayout
-            android:id="@+id/shadowLayout2"
-            android:layout_gravity="center"
-            android:layout_height="96dp"
-            android:layout_margin="56dp"
-            android:layout_width="96dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shadow_color="#FFFFFF"
-            app:shadow_just="true"
-            app:shadow_margin_bottom="14dp"
-            app:shadow_margin_right="14dp">
-
-            <androidx.cardview.widget.CardView
-                android:layout_gravity="center"
-                android:layout_height="56dp"
-                android:layout_width="56dp"
-                app:cardBackgroundColor="@android:color/holo_red_dark"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="0dp" />
-
-        </com.foc.libs.shadowLayoutPro.ShadowLayout>
 
         <com.foc.libs.shadowLayoutPro.ShadowLayout
             android:id="@+id/shadowLayout"
@@ -112,9 +89,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shadow_color="#B6C2C2C2"
+            app:shadow_behavior="com.foc.libs.shadowlayout.MyBehavior"
             app:shadow_just="true"
-            app:shadow_margin_left="14dp"
-            app:shadow_margin_top="14dp">
+            >
 
             <androidx.cardview.widget.CardView
                 android:layout_gravity="center"
@@ -131,6 +108,7 @@
             android:layout_height="56dp"
             android:layout_margin="72dp"
             android:layout_width="56dp"
+            android:visibility="visible"
             app:cardBackgroundColor="#EAEBF3"
             app:cardCornerRadius="20dp"
             app:cardElevation="0dp"
@@ -149,7 +127,7 @@
 
 
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+-->
 
 </LinearLayout>

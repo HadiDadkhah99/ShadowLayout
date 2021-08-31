@@ -6,9 +6,11 @@ import android.graphics.Bitmap;
 import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.RectF;
+import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.FrameLayout;
@@ -19,6 +21,7 @@ import androidx.annotation.Nullable;
 public class ShadowLayout extends FrameLayout {
 
     String TAG = "ShadowLayout";
+    String LAYOUT_TAG = "";
 
     //shadow value
     public int shadowValue = 25;
@@ -48,6 +51,9 @@ public class ShadowLayout extends FrameLayout {
     //just draw shadow
     private boolean isJustShadow = false;
 
+    //shadow behavior
+    private ShadowBehavior shadowBehavior;
+
 
     public ShadowLayout(@NonNull Context context) {
         super(context);
@@ -67,7 +73,8 @@ public class ShadowLayout extends FrameLayout {
     /**
      * Layout initialization
      */
-    private void init(@Nullable AttributeSet attrs) {
+    protected void init(@Nullable AttributeSet attrs) {
+
 
         //get attrs
         getAttrs(attrs);
@@ -109,6 +116,15 @@ public class ShadowLayout extends FrameLayout {
         //just shadow
         isJustShadow = typedArray.getBoolean(R.styleable.ShadowLayout_shadow_just, isJustShadow);
 
+        //***get shadow behavior
+
+        String className = typedArray.getString(R.styleable.ShadowLayout_shadow_behavior);
+        try {
+            Class oClass = Class.forName(className, true, ShadowBehavior.class.getClassLoader());
+            shadowBehavior = (ShadowBehavior) oClass.newInstance();
+        } catch (Exception ignored) {
+            Log.i(TAG, "err-->" + ignored.toString());
+        }
 
         //main
         typedArray.recycle();
@@ -124,20 +140,28 @@ public class ShadowLayout extends FrameLayout {
         //layer type
         setLayerType(LAYER_TYPE_SOFTWARE, paint);
 
+
         //set shadow value
         paint.setMaskFilter(new BlurMaskFilter(shadowValue, BlurMaskFilter.Blur.NORMAL));
 
         return paint;
     }
 
+
     @Override
     protected void dispatchDraw(Canvas canvas) {
 
+        long startDrawTime = System.currentTimeMillis();
 
         try {
 
             //if allowed
             if (isAllowDrawShadow) {
+
+                //shadow behavior
+                if (shadowBehavior != null)
+                    shadowPaint.setShader(new LinearGradient(0, 0, (int) (Math.cos(shadowBehavior.getAngle()) * getWidth()), (int) (Math.sin(shadowBehavior.getAngle()) * getWidth()), shadowBehavior.getStartColor(), shadowBehavior.getEndColor(), Shader.TileMode.CLAMP));
+
 
                 //create  bitmap for canvas
                 Bitmap bitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
@@ -173,6 +197,7 @@ public class ShadowLayout extends FrameLayout {
 
                 bitmap.recycle();
                 shadowBitmap.recycle();
+                System.gc();
 
             } else {
                 //draw all childes
@@ -183,6 +208,9 @@ public class ShadowLayout extends FrameLayout {
             e.printStackTrace();
         }
 
+        long endDrawTime = System.currentTimeMillis() - startDrawTime;
+        //log draw time
+        Log.i(TAG, "Draw_Time" + (LAYOUT_TAG.isEmpty() ? "" : ("(" + LAYOUT_TAG + ")")) + "=" + endDrawTime);
 
     }
 
@@ -256,4 +284,7 @@ public class ShadowLayout extends FrameLayout {
         this.shadowValue = shadowValue;
     }
 
+    public void setLAYOUT_TAG(String LAYOUT_TAG) {
+        this.LAYOUT_TAG = LAYOUT_TAG;
+    }
 }

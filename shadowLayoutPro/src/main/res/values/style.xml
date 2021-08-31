@@ -11,6 +11,7 @@
         <attr name="shadow_margin_top" format="dimension" />
         <attr name="shadow_margin_right" format="dimension" />
         <attr name="shadow_margin_bottom" format="dimension" />
+        <attr name="shadow_behavior" format="string" />
 
     </declare-styleable>
 </resources>
