@@ -116,8 +116,11 @@ public class ShadowLayout extends FrameLayout {
         //just shadow
         isJustShadow = typedArray.getBoolean(R.styleable.ShadowLayout_shadow_just, isJustShadow);
 
-        //***get shadow behavior
+        //get shadow tag
+        LAYOUT_TAG = typedArray.getString(R.styleable.ShadowLayout_shadow_tag);
+        LAYOUT_TAG=LAYOUT_TAG == null ? "" : LAYOUT_TAG;
 
+        //***get shadow behavior
         String className = typedArray.getString(R.styleable.ShadowLayout_shadow_behavior);
         try {
             Class oClass = Class.forName(className, true, ShadowBehavior.class.getClassLoader());

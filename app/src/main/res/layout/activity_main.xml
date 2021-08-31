@@ -46,6 +46,7 @@
         android:layout_width="match_parent"
         android:padding="16dp"
         app:shadow_allowed="true"
+        app:shadow_tag="hadi"
         app:shadow_color="#D9FF0000"
         app:shadow_margin_bottom="4dp"
         app:shadow_margin_left="1dp"
