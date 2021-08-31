@@ -48,7 +48,6 @@
         app:shadow_allowed="true"
         app:shadow_tag="hadi"
         app:shadow_color="#D9FF0000"
-        app:shadow_margin_bottom="4dp"
         app:shadow_margin_left="1dp"
         app:shadow_margin_right="1dp"
         app:shadow_margin_top="1dp"
@@ -65,14 +64,6 @@
             android:textColor="@color/black" />
     </com.foc.libs.shadowLayoutPro.ShadowLayout>
 
-
-    <Button
-        android:id="@+id/button_ed"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="Enable-Disable" />
-
-<!--
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_height="match_parent"
@@ -123,12 +114,12 @@
                 android:layout_gravity="center"
                 android:layout_height="32dp"
                 android:layout_width="32dp"
-                app:srcCompat="@drawable/ic_play" />
+                 />
         </androidx.cardview.widget.CardView>
 
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
--->
+
 
 </LinearLayout>
