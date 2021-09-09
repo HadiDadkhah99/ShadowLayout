@@ -4,7 +4,6 @@ plugins {
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.foc.libs.shadowlayout"
@@ -39,6 +38,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
 
-    implementation 'androidx.palette:palette:1.0.0'
 
 }
