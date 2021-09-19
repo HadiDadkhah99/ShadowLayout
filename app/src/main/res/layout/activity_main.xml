@@ -45,8 +45,8 @@
         android:layout_marginTop="32dp"
         android:layout_width="match_parent"
         android:padding="16dp"
-        app:shadow_allowed="true"
         app:shadow_tag="hadi"
+        app:shadow_just="true"
         app:shadow_color="#D9FF0000"
         app:shadow_margin_left="1dp"
         app:shadow_margin_right="1dp"
@@ -117,6 +117,26 @@
                  />
         </androidx.cardview.widget.CardView>
 
+
+        <com.foc.libs.shadowLayoutPro.ShadowLayout
+            android:layout_marginHorizontal="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_gravity="bottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:shadow_color="#99FF0000"
+            app:shadow_just="true"
+            app:shadow_value="15"
+            app:shadow_tag="black">
+
+            <com.foc.libs.shadowlayout.BottomCover
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                />
+
+        </com.foc.libs.shadowLayoutPro.ShadowLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
