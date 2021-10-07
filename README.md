@@ -38,8 +38,6 @@ dependencies {
         android:layout_marginTop="32dp"
         android:layout_width="match_parent"
         android:padding="8dp"
-        app:shadow_dx="0dp"
-        app:shadow_dy="0dp"
         app:shadow_color="#4E404040"
         app:shadow_value="15">
 
@@ -58,7 +56,7 @@ dependencies {
 
 </AnyLayout>
 ```
-### We can use shadow margin (left , top , right , bottom)
+### Margin shadow (left , top , right , bottom)
 ```xml
 <AnyLayout>
 
@@ -91,3 +89,50 @@ dependencies {
 
 </AnyLayout>
 ```
+
+### Only show shadow (Show shadow for any customization)
+```xml
+<AnyLayout>
+    <com.foc.libs.shadowLayoutPro.ShadowLayout
+        ...
+        app:shadow_just="true">
+	    
+	    <...>
+
+    </com.foc.libs.shadowLayoutPro.ShadowLayout>
+```
+
+### Show shadows with gradient
+1.First create a class to inherit from ShadowBehavior like this:
+```java
+public class MyBehavior extends ShadowBehavior {
+
+    @Override
+    public int getEndColor() {
+        return super.getEndColor();
+    }
+
+    @Override
+    public int getStartColor() {
+        return super.getStartColor();
+    }
+
+    @Override
+    public int getAngle() {
+        return 45;
+    }
+}
+```
+2. then set created class packege name to shadow_behavior like this:
+
+```xml
+    <com.foc.libs.shadowLayoutPro.ShadowLayout
+        ...
+        app:shadow_behavior="YOUR_PACKE_NAME.MyBehavior">
+	
+	    <...>
+	    
+    </com.foc.libs.shadowLayoutPro.ShadowLayout>
+```
+
+
