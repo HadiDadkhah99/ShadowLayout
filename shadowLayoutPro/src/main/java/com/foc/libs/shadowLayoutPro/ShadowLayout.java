@@ -54,6 +54,9 @@ public class ShadowLayout extends FrameLayout {
     //shadow behavior
     private ShadowBehavior shadowBehavior;
 
+    //shadow outer
+    private boolean isShadowOuter = false;
+
 
     public ShadowLayout(@NonNull Context context) {
         super(context);
@@ -73,7 +76,7 @@ public class ShadowLayout extends FrameLayout {
     /**
      * Layout initialization
      */
-    protected void init(@Nullable AttributeSet attrs) {
+    public void init(@Nullable AttributeSet attrs) {
 
 
         //get attrs
@@ -87,7 +90,7 @@ public class ShadowLayout extends FrameLayout {
     /**
      * get All layout attrs
      */
-    private void getAttrs(@Nullable AttributeSet attrs) {
+    public void getAttrs(@Nullable AttributeSet attrs) {
 
         if (attrs == null) return;
 
@@ -116,9 +119,12 @@ public class ShadowLayout extends FrameLayout {
         //just shadow
         isJustShadow = typedArray.getBoolean(R.styleable.ShadowLayout_shadow_just, isJustShadow);
 
+        //outer shadow
+        isShadowOuter = typedArray.getBoolean(R.styleable.ShadowLayout_shadow_outer, isShadowOuter);
+
         //get shadow tag
         LAYOUT_TAG = typedArray.getString(R.styleable.ShadowLayout_shadow_tag);
-        LAYOUT_TAG=LAYOUT_TAG == null ? "" : LAYOUT_TAG;
+        LAYOUT_TAG = LAYOUT_TAG == null ? "" : LAYOUT_TAG;
 
         //***get shadow behavior
         String className = typedArray.getString(R.styleable.ShadowLayout_shadow_behavior);
@@ -137,7 +143,7 @@ public class ShadowLayout extends FrameLayout {
     /**
      * create shadow paint
      */
-    private Paint createShadowPaint() {
+    public Paint createShadowPaint() {
 
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         //layer type
@@ -145,7 +151,7 @@ public class ShadowLayout extends FrameLayout {
 
 
         //set shadow value
-        paint.setMaskFilter(new BlurMaskFilter(shadowValue, BlurMaskFilter.Blur.NORMAL));
+        paint.setMaskFilter(new BlurMaskFilter(shadowValue, !isShadowOuter ? BlurMaskFilter.Blur.NORMAL : BlurMaskFilter.Blur.OUTER));
 
         return paint;
     }

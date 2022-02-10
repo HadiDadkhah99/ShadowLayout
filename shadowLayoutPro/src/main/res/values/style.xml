@@ -13,6 +13,7 @@
         <attr name="shadow_margin_bottom" format="dimension" />
         <attr name="shadow_behavior" format="string" />
         <attr name="shadow_tag" format="string" />
+        <attr name="shadow_outer" format="boolean" />
 
     </declare-styleable>
 </resources>
